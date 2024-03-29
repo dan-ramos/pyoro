@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpf11v3hpagbh"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dp0s1"]
+[ext_resource type="PackedScene" uid="uid://wgpi6va5mqvq" path="res://Scenes/block.tscn" id="1_ley12"]
+[ext_resource type="PackedScene" uid="uid://dhq5l87w5tvta" path="res://Scenes/bean.tscn" id="3_8gq0w"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vifme"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8awj"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_56jav"]
+material = SubResource("StandardMaterial3D_g8awj")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.20329, 14.4317)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(0.757519, -0.651662, 0.0387501, 0, 0.0593587, 0.998237, -0.652813, -0.756184, 0.0449654, 0, 0, 1.35927)
+
+[node name="pyoro" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.678113, 0, 0, 0, 1, 0, -0.114559, 0)
+script = ExtResource("1_dp0s1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pyoro"]
+shape = SubResource("CylinderShape3D_vifme")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="pyoro/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_56jav")
+
+[node name="Floor" type="Node" parent="."]
+
+[node name="block" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3842, 0)
+
+[node name="block2" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1.384, 0)
+
+[node name="block3" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.384, 0)
+
+[node name="block4" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1.384, 0)
+
+[node name="block5" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1.384, 0)
+
+[node name="block6" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1.384, 0)
+
+[node name="block7" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -1.384, 0)
+
+[node name="block8" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -1.384, 0)
+
+[node name="block9" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -1.384, 0)
+
+[node name="block10" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1.384, 0)
+
+[node name="block11" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.384, 0)
+
+[node name="block12" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1.384, 0)
+
+[node name="block13" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1.384, 0)
+
+[node name="block14" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1.384, 0)
+
+[node name="block15" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1.384, 0)
+
+[node name="block16" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -1.384, 0)
+
+[node name="block17" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1.384, 0)
+
+[node name="bean" parent="." instance=ExtResource("3_8gq0w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.20339, 5.22259, 0)
