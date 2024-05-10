@@ -1,10 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhq5l87w5tvta"]
+[gd_scene load_steps=5 format=3 uid="uid://dhq5l87w5tvta"]
 
 [ext_resource type="Script" path="res://Scripts/bean.gd" id="1_e6281"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u52s6"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_wf6no"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jx4ve"]
 albedo_color = Color(0.0651406, 0.921461, 0.0552569, 1)
@@ -12,12 +8,19 @@ albedo_color = Color(0.0651406, 0.921461, 0.0552569, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_l4kqn"]
 material = SubResource("StandardMaterial3D_jx4ve")
 
-[node name="RigidBody3D" type="RigidBody3D" groups=["bean"]]
-physics_material_override = SubResource("PhysicsMaterial_u52s6")
+[sub_resource type="SphereShape3D" id="SphereShape3D_gckoa"]
+radius = 0.45
+
+[node name="Area3D" type="Area3D" groups=["bean"]]
+collision_layer = 2
+collision_mask = 21
 script = ExtResource("1_e6281")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["bean"]]
-shape = SubResource("SphereShape3D_wf6no")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" groups=["bean"]]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["bean"]]
 mesh = SubResource("SphereMesh_l4kqn")
+skeleton = NodePath("")
+
+[node name="CollisionPolygon3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_gckoa")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

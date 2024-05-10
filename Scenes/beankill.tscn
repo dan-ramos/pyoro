@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctjk4xak5opkh"]
+
+[ext_resource type="Script" path="res://Scripts/beankill.gd" id="1_78rui"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wv8cl"]
+albedo_color = Color(0.580392, 0.580392, 0.580392, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k3ay0"]
+material = SubResource("StandardMaterial3D_wv8cl")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_artxt"]
+
+[node name="Block" type="Area3D" groups=["beankill"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_78rui")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_k3ay0")
+skeleton = NodePath("")
+
+[node name="Collision4Beans" type="CollisionShape3D" parent="." groups=["beankill"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000967085, 0)
+shape = SubResource("BoxShape3D_artxt")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

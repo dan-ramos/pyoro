@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhlp7kovwqg2p"]
+
+[ext_resource type="Script" path="res://Scripts/block.gd" id="1_1ynaq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_artxt"]
+
+[node name="Gap" type="Area3D" groups=["block"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("1_1ynaq")
+
+[node name="Collision4StopPyoro" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.246594, 0)
+shape = SubResource("BoxShape3D_artxt")
+disabled = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

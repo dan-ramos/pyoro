@@ -1,8 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://wgpi6va5mqvq"]
+[gd_scene load_steps=6 format=3 uid="uid://wgpi6va5mqvq"]
 
 [ext_resource type="Script" path="res://Scripts/block.gd" id="1_l643u"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_aqqrl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wv8cl"]
 albedo_color = Color(0.580392, 0.580392, 0.580392, 1)
@@ -10,15 +8,30 @@ albedo_color = Color(0.580392, 0.580392, 0.580392, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_k3ay0"]
 material = SubResource("StandardMaterial3D_wv8cl")
 
-[node name="RigidBody3d" type="RigidBody3D"]
-mass = 1000.0
-gravity_scale = 0.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_artxt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_efh2h"]
+
+[node name="Block" type="Area3D" groups=["block"]]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_l643u")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_aqqrl")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["block"]]
 mesh = SubResource("BoxMesh_k3ay0")
+skeleton = NodePath("")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Collision4Beans" type="CollisionShape3D" parent="." groups=["block"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000967085, 0)
+shape = SubResource("BoxShape3D_artxt")
+
+[node name="Collision4StopPyoro" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57765, 0)
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision4StopPyoro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.574763, 0)
+shape = SubResource("BoxShape3D_efh2h")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

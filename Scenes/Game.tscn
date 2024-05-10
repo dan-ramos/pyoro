@@ -1,87 +1,308 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpf11v3hpagbh"]
+[gd_scene load_steps=9 format=3 uid="uid://bpf11v3hpagbh"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dp0s1"]
+[ext_resource type="PackedScene" uid="uid://digmgm0yb84od" path="res://Scenes/pyoro.tscn" id="1_g76mi"]
 [ext_resource type="PackedScene" uid="uid://wgpi6va5mqvq" path="res://Scenes/block.tscn" id="1_ley12"]
-[ext_resource type="PackedScene" uid="uid://dhq5l87w5tvta" path="res://Scenes/bean.tscn" id="3_8gq0w"]
+[ext_resource type="Script" path="res://Scripts/Floor.gd" id="2_st7lr"]
+[ext_resource type="Script" path="res://Scripts/Spawners.gd" id="4_86k6r"]
+[ext_resource type="Script" path="res://Scripts/Spawner.gd" id="4_dvo1b"]
+[ext_resource type="Script" path="res://Scripts/Tongue Wall.gd" id="6_ye61v"]
+[ext_resource type="PackedScene" uid="uid://ctjk4xak5opkh" path="res://Scenes/beankill.tscn" id="7_phw7j"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_vifme"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8awj"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_56jav"]
-material = SubResource("StandardMaterial3D_g8awj")
+[sub_resource type="BoxShape3D" id="BoxShape3D_v34u0"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.20329, 14.4317)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.6393, 34.237)
+doppler_tracking = 1
+fov = 42.8
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
 transform = Transform3D(0.757519, -0.651662, 0.0387501, 0, 0.0593587, 0.998237, -0.652813, -0.756184, 0.0449654, 0, 0, 1.35927)
 
-[node name="pyoro" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.678113, 0, 0, 0, 1, 0, -0.114559, 0)
-script = ExtResource("1_dp0s1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="pyoro"]
-shape = SubResource("CylinderShape3D_vifme")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="pyoro/CollisionShape3D"]
-mesh = SubResource("CylinderMesh_56jav")
+[node name="pyoro" parent="." instance=ExtResource("1_g76mi")]
+transform = Transform3D(1, 0, 0, 0, 0.678113, 0, 0, 0, 1, 0, 0.211375, 0)
 
 [node name="Floor" type="Node" parent="."]
+script = ExtResource("2_st7lr")
 
 [node name="block" parent="Floor" instance=ExtResource("1_ley12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3842, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="block2" parent="Floor" instance=ExtResource("1_ley12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1.384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, 0)
 
 [node name="block3" parent="Floor" instance=ExtResource("1_ley12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, 0)
 
 [node name="block4" parent="Floor" instance=ExtResource("1_ley12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1.384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1, 0)
 
 [node name="block5" parent="Floor" instance=ExtResource("1_ley12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1.384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1, 0)
 
 [node name="block6" parent="Floor" instance=ExtResource("1_ley12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1.384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1, 0)
 
 [node name="block7" parent="Floor" instance=ExtResource("1_ley12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -1.384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -1, 0)
 
 [node name="block8" parent="Floor" instance=ExtResource("1_ley12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -1.384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -1, 0)
 
 [node name="block9" parent="Floor" instance=ExtResource("1_ley12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -1.384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -1, 0)
+
+[node name="block26" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.99974, -1, 0)
+
+[node name="block27" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.99974, -1, 0)
+
+[node name="block28" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9997, -1, 0)
+
+[node name="block29" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9997, -1, 0)
+
+[node name="block30" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9997, -1, 0)
+
+[node name="block31" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9997, -1, 0)
+
+[node name="block32" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9997, -1, 0)
+
+[node name="block33" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9997, -1, 0)
+
+[node name="block34" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9997, -1, 0)
 
 [node name="block10" parent="Floor" instance=ExtResource("1_ley12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1.384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 0)
 
 [node name="block11" parent="Floor" instance=ExtResource("1_ley12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
 
 [node name="block12" parent="Floor" instance=ExtResource("1_ley12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1.384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, 0)
 
 [node name="block13" parent="Floor" instance=ExtResource("1_ley12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1.384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 0)
 
 [node name="block14" parent="Floor" instance=ExtResource("1_ley12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1.384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, 0)
 
 [node name="block15" parent="Floor" instance=ExtResource("1_ley12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1.384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, 0)
 
 [node name="block16" parent="Floor" instance=ExtResource("1_ley12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -1.384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -1, 0)
 
 [node name="block17" parent="Floor" instance=ExtResource("1_ley12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1.384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 0)
 
-[node name="bean" parent="." instance=ExtResource("3_8gq0w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.20339, 5.22259, 0)
+[node name="block18" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.00005, -1, 0)
+
+[node name="block19" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0001, -1, 0)
+
+[node name="block20" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0001, -1, 0)
+
+[node name="block21" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0001, -1, 0)
+
+[node name="block22" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0001, -1, 0)
+
+[node name="block23" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0001, -1, 0)
+
+[node name="block24" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0001, -1, 0)
+
+[node name="block25" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0001, -1, 0)
+
+[node name="block35" parent="Floor" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -1, 0)
+
+[node name="Edges" type="Node" parent="."]
+
+[node name="block36" parent="Edges" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -1, 0)
+broken = true
+
+[node name="block37" parent="Edges" instance=ExtResource("1_ley12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -1, 0)
+broken = true
+
+[node name="Spawners" type="Node" parent="."]
+script = ExtResource("4_86k6r")
+
+[node name="Spawner" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner2" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner3" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner4" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner5" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner6" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner7" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner8" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.99998, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner9" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.99998, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner10" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.99998, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner11" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.99998, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner12" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.99998, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner13" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99998, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner14" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99998, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner15" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99998, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner16" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99998, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner17" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999982, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner18" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000346184, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner19" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.999673, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner20" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99967, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner21" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.99967, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner22" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.99967, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner23" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99967, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner24" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.99967, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner25" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.99967, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner26" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.99967, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner27" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.99967, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner28" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.99967, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner29" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9997, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner30" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9997, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner31" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9997, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner32" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9997, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner33" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9997, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner34" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9997, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Spawner35" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 30, 0)
+script = ExtResource("4_dvo1b")
+
+[node name="Tongue Wall" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.6075, 0)
+collision_layer = 48
+collision_mask = 17
+script = ExtResource("6_ye61v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tongue Wall"]
+transform = Transform3D(37, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_v34u0")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Tongue Wall"]
+transform = Transform3D(-1.61732e-06, -1, 0, 37, -4.37114e-08, 0, 0, 0, 1, -18.6889, -11.1283, 0)
+shape = SubResource("BoxShape3D_v34u0")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Tongue Wall"]
+transform = Transform3D(-1.61732e-06, -1, 0, 37, -4.37114e-08, 0, 0, 0, 1, 18.4492, -11.1283, 0)
+shape = SubResource("BoxShape3D_v34u0")
+
+[node name="BEAN KILLER" parent="." instance=ExtResource("7_phw7j")]
+transform = Transform3D(49.6854, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.35665, 0)
+
+[connection signal="area_shape_entered" from="Tongue Wall" to="Tongue Wall" method="_on_area_shape_entered"]
