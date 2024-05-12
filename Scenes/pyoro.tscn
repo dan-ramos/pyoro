@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://digmgm0yb84od"]
+[gd_scene load_steps=11 format=3 uid="uid://digmgm0yb84od"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_o7vcw"]
 
@@ -21,6 +21,11 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_tkhnu"]
 material = SubResource("StandardMaterial3D_1i0rg")
 
+[sub_resource type="Curve3D" id="Curve3D_1m3i8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5k21r"]
+albedo_color = Color(1, 0, 0, 1)
+
 [node name="pyoro" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 0.678113, 0, 0, 0, 1, 0, -0.114559, 0)
 collision_mask = 14
@@ -33,13 +38,14 @@ collision_mask = 14
 shape = SubResource("CapsuleShape3D_vj582")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 0, 0)
 shape = SubResource("CylinderShape3D_vifme")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 mesh = SubResource("CylinderMesh_56jav")
 
 [node name="Tongue" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+transform = Transform3D(1.51, 0, 0, 0, 1.51, 0, 0, 0, 1.51, 0, 0.379, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tongue"]
 shape = SubResource("BoxShape3D_xs2rv")
@@ -51,3 +57,21 @@ mesh = SubResource("SphereMesh_tkhnu")
 [node name="Tongue Home Marker" type="Marker3D" parent="."]
 
 [node name="Tongue Final Point" type="Marker3D" parent="."]
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_1m3i8")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.98023e-08, 0)
+polygon = PackedVector2Array(0.2, 0.2, 0.2, -0.2, -0.2, -0.2, -0.2, 0.2)
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 1
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_5k21r")

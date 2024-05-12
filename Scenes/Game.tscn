@@ -14,7 +14,6 @@
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.6393, 34.237)
-doppler_tracking = 1
 fov = 42.8
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
